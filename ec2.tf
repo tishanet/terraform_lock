@@ -9,6 +9,7 @@ module "ec2_bastion" {
   root_block_device      = [{ volume_size = 10 }]
   vpc_security_group_ids = [module.bastion_sg.security_group_id]
   subnet_id              = module.vpc_zdh.public_subnets[0]
+  depends_on = [module.s3_zdh_bucket.name]
   /*tags = {
     name = "s3 dynamo-backend"
   }*/
